@@ -5,11 +5,13 @@
   "name": "Иванов И.И.",
   "aliases": ["иванов"],
 
-  "row_label_pattern": "вопрос",
-  "only_new_seminars": false,
-  "skip_seminars": [],
+  "target_seminar": 4,
+  "preferred_questions": [2],
+  "allow_other_questions": true,
 
-  "poll_seconds": 10,
+  "poll_seconds": 1,
+  "read_via": "csv",
+  "row_label_pattern": "вопрос",
 
   "auth": "oauth",
   "credentials_file": "credentials.json",

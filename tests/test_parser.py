@@ -71,3 +71,25 @@ def test_my_slot():
     m = make_matcher("Буров", [])
     assert my_slot(ROWS, sems[0], m) is None
     assert a1(*my_slot(ROWS, sems[2], m)) == "E14"
+
+
+def test_preferred_question_goes_first():
+    from sheet_parser import find_seminar, ordered_free_slots
+    rows = ROWS + [
+        [""] * 6,
+        ["семинар", "4 семинар", "4 семинар", "4 семинар", "4 семинар", ""],
+        ["1 вопрос", "", "", "", "", ""],
+        ["2 вопрос", "андронов", "", "", "", ""],
+        ["3 вопрос", "", "", "", "", ""],
+    ]
+    sem = find_seminar(parse_seminars(rows), 4)
+    slots = ordered_free_slots(rows, sem, [2])
+    assert a1(*slots[0]) == "C20"
+    assert [a1(*s) for s in ordered_free_slots(rows, sem, [2], False)] == ["C20", "D20", "E20"]
+
+
+def test_header_without_label_in_column_a():
+    rows = [["", "4 семинар", "4 семинар"], ["2 вопрос", "", "x"]]
+    sem = parse_seminars(rows)[0]
+    assert sem.number == 4 and sem.questions == {1: 2}
+    assert free_slots(rows, sem) == [(1, 1)]

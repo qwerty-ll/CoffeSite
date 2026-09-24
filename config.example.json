@@ -1,0 +1,17 @@
+{
+  "spreadsheet": "https://docs.google.com/spreadsheets/d/ВСТАВЬ_ID_ТАБЛИЦЫ/edit",
+  "worksheet": "Лист1",
+
+  "name": "Иванов И.И.",
+  "aliases": ["иванов"],
+
+  "row_label_pattern": "вопрос",
+  "only_new_seminars": false,
+  "skip_seminars": [],
+
+  "poll_seconds": 10,
+
+  "auth": "oauth",
+  "credentials_file": "credentials.json",
+  "service_account_file": "service_account.json"
+}

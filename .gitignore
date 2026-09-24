@@ -1,7 +1,6 @@
 __pycache__/
 *.pyc
 .venv/
-config.json
 credentials.json
 service_account.json
 authorized_user.json
